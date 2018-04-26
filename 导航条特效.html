@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>导航条</title>
+</head>
+<style>
+*{ padding:0; margin:0; list-style:none; text-decoration:none; font-family:"微软雅黑", "宋体", "楷体"; font-size:14px;}
+.nav{ height:40px; width:100%; background-color:#1A1A1A; margin-top:100px;}
+.nav ul{ width:800px; height:40px; margin:0 auto;}
+.nav ul li{ float:left; position:relative;}
+.nav ul li> a{ display:block; color:#ccc; text-align:center; line-height:40px; padding:0 30px;}
+.nav ul li:hover> a{ color:#000000; background-color:#4B4B4B;}
+.nav ul li .down{ width:150px; position:absolute; top:40px; left:0; background-color:#4B4B4B; display:none;}
+.nav ul li .down a{ display:block; color:#ccc; text-align:center; line-height:40px; border-top:1px solid #ccc;}
+.nav ul li .down a:hover{ background-color:#ccc; color:#000;}
+
+
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	/*$(".btn").mouseover(function(){
+		$(this).html("更改后");
+	})	
+	$(".btn").mouseout(function(){
+		$(this).html("按钮");
+	})	*/
+	$(".nav li").hover(function(){
+		//$(this).find(".down").show();
+		//$(this).find(".down").fadeIn();
+		$(this).find(".down").slideDown();
+	},function(){
+		//$(this).find(".down").hide();
+		//$(this).find(".down").fadeOut();
+		$(this).find(".down").slideUp();
+	})
+})
+</script>
+
+<body>
+<div class="nav">
+	<ul>
+    	<li><a href="#">首页</a></li>
+        <li><a href="#">内容</a>
+        	<div class="down">
+                <a href="#">关于我们</a>
+                <a href="#">联系我们</a>
+                <a href="#">公司地址</a>
+            </div>
+        </li>
+        <li><a href="#">产品</a>
+        	<div class="down">
+            	<a href="#">产品一</a>
+                <a href="#">产品二</a>
+                <a href="#">产品三</a>
+                <a href="#">产品四</a>
+            </div>
+        </li>
+        <li><a href="#">新闻</a></li>
+    </ul>
+
+</div>
+</body>
+</html>

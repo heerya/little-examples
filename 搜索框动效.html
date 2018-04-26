@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>搜索框动效</title>
+<style>
+*{ margin:0; padding:0;}
+input{ outline:none;}
+.out{ width:200px; height:30px; margin:100px; position:relative; overflow:hidden;}
+.key{ width:160px; height:28px; border:none; border-bottom:2px solid #ccc; padding:0 10px 0 10px; background:none; position:absolute; top:0; right:-200px;}
+.btn{ width:22px; height:22px; background:url(images/sousuo.png) no-repeat center; border:none; position:absolute;top:0; right:0; cursor:pointer;}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	$(".btn").mouseover(function(){
+		$(".key").animate({right:0},400);
+		setTimeout(function(){
+			$(".key").focus(); 
+		},500);
+	})	
+	$(".key").blur(function(){
+		$(".key").animate({right:-200},400);	
+	})
+})
+</script>
+</head>
+
+<body>
+<div class="out">
+	<form>
+    	<input type="text" name="key" class="key"/>
+        <input type="submit" value="" class="btn"/>
+    </form>
+</div>
+
+</body>
+</html>

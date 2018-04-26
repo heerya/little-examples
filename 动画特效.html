@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>中英导航条</title>
+
+<style>
+*{ padding:0; margin:0; text-decoration:none; list-style:none; font-family:"方正清刻本悦宋简体";}
+body{ background-color:#A72A2C;}
+.btn1,btn2{ float:left; margin-left:200px; width:50px; height:50px; border-radius:50%; background-color:#555555;}
+.nav{ width:200px; height:800px; background:#323232; position:fixed ;display:none;}
+.nav img{ width:150px; margin:40px 25px; border-radius:20px;}
+.nav ul{ width:150px; height:900px; margin:auto; }
+.nav ul li a,.nav ul li b,.nav ul li i{ display:block; color:#ccc;}
+.nav ul li i{ text-align:center; line-height:40px;}
+.nav ul li b{ font-weight:400; background:#444; color:#fff;display:none;text-align:center; line-height:40px;}
+.nav ul li i{ font-style:normal; border:1px #ccc solid;}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	$(".btn1").click(function(){
+		$(".nav").css("display","block");
+		$(".nav li").hover(function(){
+			
+			<!--$(this).find("i").stop().animate({"background-color":"#fff"},1000);-->
+			$(this).find("b").slideDown();
+		},function(){
+			<!--$(this).find("i").stop().animate({"background-color":"#fff"},1000);-->
+			$(this).find("b").slideUp();
+		})
+	})	
+})
+
+</script>
+</head>
+<body>
+<div class="btn1"></div>
+<div class="btn2"></div>
+<div class="nav">
+<img src="images/11.jpg"/>
+<ul>
+	<li>
+    	<a href="#">
+        <i>guess me</i>
+        <b>贺宇欣</b>
+        </a>
+	</li>
+    <li>
+    	<a href="#">
+        <i>my major</i>
+        <b>电子信息工程</b>
+        </a>
+	</li>
+    <li>
+    	<a href="#">
+        <i>birth</i>
+        <b>97.11.06</b>
+        </a>
+	</li>
+    <li>
+    	<a href="#">
+        <i>hometown</i>
+        <b>陕西西安</b>
+        </a>
+	</li>
+    <li>
+    	<a href="#">
+        <i>hobby</i>
+        <b>游戏</b>
+        </a>
+	</li>
+</ul>
+</div>
+</body>
+</html>

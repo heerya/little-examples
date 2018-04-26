@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>定位在交互上的作用</title>
+<style>
+*{ margin:0; padding:0;}
+body{ font-family:"方正清刻本悦宋简体"}
+.out{ width:1040px; height:260px; margin:100px auto;}
+.box{ width:240px; height:240px; position:relative; overflow:hidden; margin:10px 10px; float:left;}
+.box .ceng{ width:240px; height:240px; background:rgba(251,1,5,0.8); position:absolute; top:240px;left:0; text-align:center; transition:0.3s;}
+.box .ceng h2{ color:#fff; font-size:24px; font-weight:bold; padding:50px 0 10px;}
+.box .ceng p{ padding:15px 10px; font-size:16px; margin-bottom:10px;}
+.box .ceng .btn a{ font-size:14px; color:#fff; text-decoration:none;}
+.box .ceng .btn{ width:110px; height:30px; margin:0 auto; line-height:30px; position:relative;}
+.box .ceng .btn span{ display:block; position:absolute;transition:0.3s; opacity:0;}
+.box .ceng .btn .top{ width:110px; height:2px; background:#fff; top:0; left:-110px;}
+.box .ceng .btn .left{ width:2px; height:30px; background:#fff; left:0; top:-30px;}
+.box .ceng .btn .right{ width:2px; height:30px; background:#fff; top:30px; left:110px;}
+.box .ceng .btn .bottom{ width:110px; height:2px; background:#fff; top:30px; left:110px;}
+
+.box:hover .ceng{ top:0;}
+.box .ceng .btn:hover span{ opacity:1;}
+.box .ceng .btn:hover .top{ left:0px;}
+.box .ceng .btn:hover .left{ top:0px;}
+.box .ceng .btn:hover .right{ top:0px;}
+.box .ceng .btn:hover .bottom{ left:0px;}
+</style> 
+</head>
+
+<body>
+<div class="out">
+	<div class="box">
+    <img src="image/17-01-27-19-00-42-222_photo.png"/>
+        <div class="ceng">
+            <h2>自拍一</h2>
+            <p>北方小年那天，窗外鞭炮声声。</p>
+            <div class="btn">
+                
+                <span class="top"></span>
+                <span class="left"></span>
+                <span class="right"></span>
+                <span class="bottom"></span>
+                <a href="#">了解更多></a>
+            </div>
+        </div>
+    </div>
+    <div class="box">
+    <img src="image/17-01-27-19-08-52-060_photo.png"/>
+    <div class="ceng">
+        <h2>照片二</h2>
+        <p>在爆竹声中，给弟弟拍张照。</p>
+        <div class="btn" >
+                
+                <span class="top"></span>
+                <span class="left"></span>
+                <span class="right"></span>
+                <span class="bottom"></span>
+                <a href="#">了解更多></a>
+            </div>
+    </div>
+    </div>
+    <div class="box">
+    <img src="image/17-01-27-19-03-14-805_photo.png"/>
+    <div class="ceng">
+        <h2>自拍三</h2>
+        <p>祝大家鸡年大吉大利！</p>
+        <div class="btn" >
+                
+                <span class="top"></span>
+                <span class="left"></span>
+                <span class="right"></span>
+                <span class="bottom"></span>
+                <a href="#">了解更多></a>
+            </div>
+    </div>
+    </div>
+    <div class="box">
+    <img src="image/17-01-27-19-08-22-357_photo.png"/>
+    <div class="ceng">
+        <h2>照片四</h2>
+        <p>新的一年新气象，财源滚滚。</p>
+        <div class="btn" >
+                
+                <span class="top"></span>
+                <span class="left"></span>
+                <span class="right"></span>
+                <span class="bottom"></span>
+                <a href="#">了解更多></a>
+            </div>
+    </div>
+    </div>
+</div>
+
+</body>
+</html>

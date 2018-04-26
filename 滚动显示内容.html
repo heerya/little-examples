@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>滚动到指定位置显示内容</title>
+<style>
+*{ margin:0; padding:0;}
+.header{ height:500px; background:#ccc;}
+.banner{ height:700px; background:#A73638;}
+.about{ height:600px; background:#fc6; text-align:center; width:100%; overflow:hidden}
+.about h1{ padding:60px 0 40px; position:relative; left:-100%;transition:0.5s;}
+.about p{ padding:0 150px; position:relative; right:-100%;transition:0.4s 0.5s;}<!--延迟0.5s-->
+.about.on h1{ left:0;}
+.about.on p{ right:0;}
+.news{ height:400px; background:#098; width:1000px; margin:0 auto; overflow:hidden;}
+.news .left{ width:300px; height:400px; background:#444; float:left; position:relative; left:-300px; transition:0.4s;}
+.news .right{ width:660px; height:400px; background:#777; float:right; position:relative; right:-660px;transition:0.4s;}
+.news.on .left{ left:0; }
+.news.on .right{ right:0;}
+.footer{ height:400px; background:#C42EC8;}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	var newsTop=$(".news").offset().top;
+	var aboutTop=$(".about").offset().top;
+	var winH=$(window).height()*0.7;
+	$(window).scroll(function(){
+		var st=$(this).scrollTop();	
+		if(st>=newsTop-winH){//走到屏幕的0.7位置后
+			$(".news").addClass("on");	
+		}
+		if(st>=aboutTop-winH){//走到屏幕的0.7位置后
+			$(".about").addClass("on");	
+		}
+	})
+})
+
+</script>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="banner"></div>
+
+<div class="about">
+	<h1>我是标题我是标题我是标题我是标题</h1>
+    <p>我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</p>
+</div>
+<div class="news">
+    <div class="left"></div>
+    <div class="right"></div>
+</div>
+
+<div class="product"></div>
+
+<div class="footer"></div>
+</body>
+</html>

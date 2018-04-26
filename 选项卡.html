@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>选项卡</title>
+<style>
+*{ padding:0; margin:0; text-decoration:none; list-style:none;}
+.banner{ width:520px; height:390px; margin:100px auto; position:relative;}
+.pic li{ position:absolute; top:0; left:0; display:none;}
+.num{ position:absolute; bottom:20px;left:190px;}
+.banner .num li{ width:14px; height:14px; background-color:#fff; float:left; margin:0 5px; border-radius:50%;}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	$(".banner .pic li").eq(0).show();
+	$(".banner .num li").eq(0).css("background","red");
+	$(".banner .num li").mouseover(function(){
+		$(this).css("background","red").siblings("li").css("background","#fff")
+			var idx=$(this).index();
+			//$(".banner .pic li").eq(idx).show().siblings("li").hide();
+			$(".banner .pic li").eq(idx).fadeIn().siblings("li").fadeOut();
+		})
+		
+})
+</script>
+</head>
+
+<body>
+<div class="banner">
+<ul class="pic">
+	<li>
+    	<a href="#">
+        	<img src="images/1.jpg">
+        </a>
+    </li>
+    <li>
+    	<a href="#">
+        	<img src="images/2.jpg">
+        </a>
+    </li>
+    <li>
+    	<a href="#">
+        	<img src="images/3.jpg">
+        </a>
+    </li>
+    <li>
+    	<a href="#">
+        	<img src="images/4.jpg">
+        </a>
+    </li>
+    <li>
+    	<a href="#">
+        	<img src="images/5.jpg">
+        </a>
+    </li>
+    <li>
+    	<a href="#">
+        	<img src="images/6.jpg">
+        </a>
+    </li>
+</ul>
+<ol class="num">
+	<li></li>
+	<li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ol>
+</div>
+
+</body>
+</html>

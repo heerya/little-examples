@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>浮动布局</title>
+<style>
+*{ padding:0; margin:0;}
+.header{ height:100px; background:#D0D0D0;}
+.header .nav{ height:100px; width:980px; background:#623637; margin:0 auto;}
+.banner{ height:400px; width:980px; margin:10px auto; background:#D0D0D0;}
+.main{ height:400px; width:980px; margin:10px auto; background:#D0D0D0;}
+.main .left{ width:300px; height:400px; background:#623637; float:left; margin-right:10px;}
+.main .right-top{ width:670px; height:195px; background:#623637; float:right;}
+.main .right-bottom1{ width:330px; height:195px; background:#623637; float:right; margin-top:10px;margin-left:10px;}
+.main .right-bottom2{ width:330px; height:195px; background:#623637; float:right; margin-top:10px; }
+
+.footer{ height:100px; margin:10px auto; background:#D0D0D0;}
+.footer .text{ height:100px; width:980px; margin:0 auto; background:#623637;}
+
+
+
+
+
+</style>
+</head>
+
+<body>
+<!--头部区域-->
+<div class="header">
+<div class="nav">nav</div>
+</div>
+<!--海报区域-->
+<div class="banner"></div>
+<!--内容区域-->
+<div class="main">
+<div class="left">left</div>
+<div class="right-top">right-top</div>
+<div class="right-bottom1">right-bottom1</div>
+<div class="right-bottom2">right-bottom2</div>
+
+</div>
+<!--底部区域-->
+<div class="footer">
+<div class="text">footer_text</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>表单验证</title>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	$(".myform").submit(function(){
+		if($(".user").val()==""){
+			alert("用户名不能为空");
+			$(".user").focus();
+			return false;//不会跳转。php了
+		}
+		if($(".psw").val()==""){
+			alert("密码不能为空");
+			$(".pwd").focus();
+			return false;
+		}
+	})	
+})
+</script>
+</head>
+
+<body>
+
+<form action="123.php" class="myform">
+	<div class="row">用户名：<input type="text" name="user" class="user"/></div>
+    <div class="row">密码：<input type="password" name="pwd" class="pwd"/></div>
+    <div class="row">
+    	<input type="submit"/>
+    </div>
+</form>
+</body>
+</html>

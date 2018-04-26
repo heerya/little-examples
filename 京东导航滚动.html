@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ padding:0; margin:0;}
+.leftNav{ height:50px; width:100%; background-color:blue; position:fixed;left:50px; bottom:140px; width:30px;}
+.leftNav .item{width:30px; height:30px; background:#fff; text-align:center; line-height:30px; border:1px #000 solid; cursor:pointer;}
+.leftNav .item.on{ background-color:red;}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+	$(window).scroll(function(){
+		var st=$(this).scrollTop();
+		$(".box").each(function(i) {
+            var ft=$(".box").eq(i).offset().top;//获取每个box的位置
+			if(st>=ft){
+				$(".item").eq(i).addClass("on").siblings().removeClass("on");
+			}
+        });
+	})	
+	$(".item").click(function(){
+		var idx=$(this).index();//获取item的编号
+		var boxT=$(".box").eq(idx).offset().top;//对应编号的盒子距离顶部的高度
+		$("body,html").animate({scrollTop:boxT})
+	})
+})
+</script>
+</head>
+
+<body>
+
+<div class="leftNav">
+	<div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+</div>
+<div class="box" style="height:600px; background-color:#D4D4D4">111</div>
+<div class="box" style="height:600px; background-color:#ccc">222</div>
+<div class="box" style="height:600px; background-color:#333">333</div>
+<div class="box" style="height:600px; background-color:#555">444</div>
+<div class="box" style="height:600px; background-color:#666">555</div>
+<div class="box" style="height:600px; background-color:#777">666</div>
+<div class="box" style="height:300px; background-color:#888">bottom</div>
+</body>
+</html>
