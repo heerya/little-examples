@@ -1,0 +1,117 @@
+*{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+body{
+	color: #3c3c3c;
+	background: #f5f5f5;
+}
+a{
+	cursor: pointer;
+	text-decoration: none;
+}
+
+/*头部nav*/
+.header{
+	height: 35px;
+	width: 1190px;
+	margin: 0 auto;
+}
+
+.header::after{
+	content: "";
+	clear: both;
+	display: block;
+}
+
+.header-l-gj ,
+.header-l-dl ,
+.header-mobile{
+	float: left;
+	padding: 0 6px;
+}
+.header-l li span{
+	margin-right: 7px;
+	line-height: 35px;
+	font-size: 12px;
+}
+.header-l-hide{
+	position: relative;
+	display: none;
+}
+.header-l-gj:hover{
+	background: #fff;
+}
+.header-l-hide ul{
+
+	position: absolute;
+	left: 0;
+	top: 35px;
+	padding: 8px 0;
+	border: 1px solid #eee;
+	background: #fff;
+	max-height: 270px;
+	overflow-y: scroll; 
+}
+.header-l-hide li{
+	width: 242px;
+	height: 29px;
+	line-height: 29px;
+	padding-left: 8px;
+	font-size: 12px;
+}
+.header-l-hide li:hover{
+	background: #eee;
+}
+.header-l-dl a{
+	font-size: 12px;
+	margin-right: 7px;
+	line-height: 35px;
+	color: #6c6c6c;
+}
+.header .header-l-dl .h{
+	color: #f22e00!important;
+}
+.header-l-dl a:hover{
+	color: #f22e00;
+}
+.header-mobile a{
+	line-height: 35px;
+	font-size: 12px;
+	color: #6c6c6c;
+	margin-right: 7px;
+	color: #6c6c6c;
+}
+.header-mobile a:hover{
+	color: #f22e00;
+}
+
+.header-r{
+	float: right;
+}
+.header-r li{
+	float: right;
+}
+.header-r a, .header-r span{
+	line-height: 35px;
+	color: #6c6c6c;
+	font-size: 12px;
+	margin-left: 7px;
+}
+.header-r a:hover{
+	color: #f22e00;
+}
+
+/*搜索部分*/
+.search{
+	height: 97px;
+	background: #fff;
+	padding-top:24px; 
+}
+.top-wrap{
+	width: 990px;
+	height: 88px;
+	border: 1px solid red;
+	margin: 0 auto;
+}
