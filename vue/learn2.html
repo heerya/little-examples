@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id = "app">
+		<!-- 改变文本框内容，同时改变output的内容 -->
+		<input type="text" v-on:keyup = "changeName">
+		output : {{ name }}
+		<!-- 点击空格才能转换文字内容 -->
+		<input type="text" v-on:keyup.enter.space = "name = $event.target.value">
+		output : {{ name }}
+		<!-- 去掉submit的跳转事件 -->
+		<form v-on:submit.prevent>
+			<input type="submit" >
+		</form>
+	</div>
+	<script>
+		new Vue({
+			el : "#app",
+			data:{
+				name : "hello"
+			},
+			methods : {
+				changeName : function(event){
+					this.name = event.target.value;
+				}
+				
+			}
+		})
+	</script>
+</body>
+</html>

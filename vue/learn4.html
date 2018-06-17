@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div class="app">
+		<input type="password" v-modal = "password" v-on:input = "input">
+
+		<p v-if = "chars > 8">你的字符大于8个</p>
+		<p v-else-if = "chars > 0">你有{{ chars }}个字符</p>
+		<p v-else>你没有字符</p>
+
+		<ol>
+			<li v-for = "item in subs">
+				{{item.name}}
+				<ul>
+					<li v-for = "items in item.sub">{{ items }}</li>
+				</ul>
+			</li>
+		</ol>
+	</div>
+	<script>
+		new Vue({
+			el : ".app",
+			data : {
+				password : "",
+				chars : 10,
+				subs : [{
+					name : "javascript", sub : ["vue","react","angular"]
+				},{
+					name : "database", sub : ["myapl","mongodb","sqls"]
+				},{
+					name : "system", sub : ["macOS","linux","windows"] 
+				}]
+			},
+			methods : {
+
+			}
+		})
+	</script>
+</body>
+</html>

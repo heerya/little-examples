@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>中英导航条</title>
+
+<style>
+*{ 
+    padding:0; 
+    margin:0;
+}
+body{
+    background-color:#0e141b; 
+    font-family: "微软雅黑";
+}
+.wrapper{
+    width:100%;
+    text-align: center;
+}
+.wrapper .column,
+.wrapper .coln{
+    display: inline-block;
+    color: #fff;
+    vertical-align: top;
+    font-size: 86px;
+    line-height: 86px;
+    font-weight: 300;
+}
+.coln{
+    transform: translateY(calc(50vh - 43px));/*屏幕100vh*/
+}
+.visible{
+    opacity: 1;
+}
+.close{
+    opacity: 0.35;
+}
+.far{
+    opacity: 0.15;
+}
+.dis{
+    opacity: 0.1;
+}
+</style>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+$(funtion(){
+    function Index(dom,use24Hours){
+        this.column = Array.form(dom);
+        this.use24Hours = use24Hours;
+        this.classList = ['visible','close','far','dis','dis'];
+        this.start();
+    }
+    Index.prototype.start = function(){
+        var self = this;
+        setInterval(function(){
+            self.getClock();
+        },200);
+    }
+    Index.prototype.getClock = function(){
+        var d = new Date();
+        return [this.use24Hours ? d.getHours(): d.getHours() %12 || 12,d.getMinutes(),d.getSeconds()]
+    }
+
+    new Index($('.column'),true);
+})
+</script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="column">
+            <div>0</div>
+            <div>1</div>
+            <div>2</div>
+        </div>
+        <div class="column">
+            <div>0</div>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+        </div>
+        <div class="coln">:</div>
+        
+        <div class="column">
+            <div>0</div>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+        </div>
+        <div class="column">
+            <div>0</div>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+        </div>
+        <div class="coln">:</div>
+        <div class="column">
+            <div>0</div>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+        </div>
+        <div class="column">
+            <div>0</div>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>唇彩</title>
+<link rel="stylesheet" href="css/pro1.css">
+<script src="js/jquery-1.11.3.min.js"></script>
+</head>
+
+<body>
+
+<div class="title">
+        <h1>beauty makeup</h1>
+</div>
+<!-- nav -->
+<div class="nav">
+    <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="pro4.html">内容</a>
+            <div class="down">
+                <a href="pro4.html">关于我们</a>
+                <a href="pro4.html">联系我们</a>
+                <a href="pro4.html">公司地址</a>
+            </div>
+        </li>
+        <li><a href="#">产品</a>
+            <div class="down">
+                 <a href="pro2.html">唇膏</a>
+                <a href="pro1.html">唇彩</a>
+                <a href="pro3.html">唇线笔</a>
+                <a href="pro4.html">更多</a>
+            </div>
+        </li>
+        <li><a href="#">新闻</a></li>
+    </ul>
+</div>
+<!-- img -->
+<div class="wrapper">
+    <div class="line left"></div>
+    <h2>更多内容，敬请期待</h2>
+    <div class="line right"></div>
+</div>
+
+
+
+<!-- footer -->
+<div class="footer">
+    <h2>奥黛丽赫本曾说：“优雅是唯一不会褪色的美。“</h2>
+</div>
+
+<script>
+    $(".nav li").hover(function(){
+        $(this).find(".down").slideDown();
+    },function(){
+        $(this).find(".down").slideUp();
+    })
+</script>
+</body>
+</html>
