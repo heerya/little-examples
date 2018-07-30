@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>baiduInput(jsonp)</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		text-decoration: none;
+	}
+		.wrapper{
+			margin:100px;
+		}
+		input{
+			width: 400px;
+			height: 34px;
+		}
+		ul{
+			display: none;
+			width: 400px;
+			border:1px solid #ccc;
+		}
+		li:hover{
+			background-color: #ddd;
+		}
+		a{
+			color: #999;
+			font-size: 14px;
+			margin: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<input type="text">
+		<ul></ul>
+	</div>
+	<script>
+		var ul = document.getElementsByTagName('ul')[0];
+		var oInput = document.getElementsByTagName('input')[0];
+		//input改变时触发
+		oInput.oninput = function(){
+			var value = this.value;
+			var oScript = document.createElement('script');
+			oScript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+value+'&cb=doJson';//百度接口
+			document.body.appendChild(oScript);
+			document.body.removeChild(oScript);
+			
+		}
+		//回调函数
+		function doJson(data){
+			var s = data.s;
+			var str = '';
+			if(s.length>0){
+				s.forEach(function(ele,index){
+					str += '<li><a href=https://www.baidu.com/s?wd='+ ele +'>'+ ele +'</li>';
+				})
+				ul.innerHTML = str;
+				ul.style.display = 'block';
+			}else{
+				ul.style.display = 'none';
+			}
+			
+		}
+		function ds(data){
+			console.log(data);
+		}
+	</script>
+	<!-- 城市天气接口 -->
+	<!-- 还有一些其他的接口 -->
+	<!-- https://www.bejson.com/knownjson/webInterface/ -->
+	<script src="http://wthrcdn.etouch.cn/weather_mini?city=哈尔滨&callback=ds"></script>
+</body>
+</html>
