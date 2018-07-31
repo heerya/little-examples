@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #demo{
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+            background: red;
+            border-radius: 50%;
+        }
+    
+    
+    
+    </style>
+</head>
+<body>
+    <div id="demo"></div>
+    <script>
+        var oDemo = document.getElementById('demo');
+        
+        var manageCookie = {
+            setCookie: function (name, value, data) {
+                document.cookie = name + '=' + value + ';max-age=' + data; 
+                return this;
+            },
+            removeCookie: function (name) {
+                this.setCookie(name, '', -1); 
+                return this;
+            },
+            getCookie: function (name, callback) {
+                var allCookieArr = document.cookie.split('; ');
+                var len = allCookieArr.length;
+                for(var i = 0; i < len; i++) {
+                    var itemCookieArr = allCookieArr[i].split('=');
+                    if(itemCookieArr[0] == name) {
+                        callback(itemCookieArr[1]);
+                        return this; 
+                    } 
+                }
+                callback(null);
+                return this;
+            }
+        }
+
+
+        var a;
+
+        var drag = {
+            init: function(dom) {
+                this.dom = dom;
+                var _this = this;
+                this.bindEvent();
+                //如果cookie里有值，就取出来用
+                manageCookie.getCookie('newLeft', function (data) {
+                    
+                    _this.dom.style.left = data + 'px';
+                }).getCookie('newTop', a = function (data) {
+                    _this.dom.style.top = data + 'px';
+                    return data;
+                })
+            },
+            bindEvent: function () {
+                this.dom.onmousedown = this.mouseDown.bind(this);//由dom改成drag
+            },
+            mouseDown: function (e) {
+                document.onmousemove = this.mouseMove.bind(this);//防止mousemoveguo过程中小方块发生脱离，所以绑定在document上
+                document.onmouseup = this.mouseUp.bind(this);
+
+                this.disY = e.clientY - this.dom.offsetTop;//现在点击的位置值减去原来位置的值，存在this下面
+                this.disX = e.clientX - this.dom.offsetLeft;
+            },
+            mouseMove: function(e) {
+                this.newLeft = e.clientX - this.disX;
+                this.newTop = e.clientY - this.disY;
+                this.dom.style.left = this.newLeft + 'px';
+                this.dom.style.top = this.newTop + 'px';
+            },
+            mouseUp: function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+                manageCookie.setCookie('newLeft', this.newLeft, 10000).setCookie('newTop',this.newTop, 10000);//位置信息放在cookie里面
+            }
+        }
+        drag.init(oDemo);
+
+
+        
+        
+
+    
+    
+    </script>
+</body>
+</html>
