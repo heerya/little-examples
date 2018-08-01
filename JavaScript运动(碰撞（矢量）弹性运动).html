@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>碰撞（矢量）弹性运动</title>
+	<style>
+	*{
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+		div{
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			width: 100px;
+			height: 100px;
+			background-color: orange;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<script>
+		var oDiv = document.getElementsByTagName('div')[0];
+		oDiv.onclick = function(){
+			startMove(this);
+		}
+
+		
+		function startMove(obj,target){
+			clearInterval(obj.timer);
+			var iSpeedX = 60;//初速度
+			var iSpeedY = 20
+			var g = 6;
+			var a;//加速度
+			obj.timer = setInterval(function(){
+				iSpeedY += g;
+				var newLeft = obj.offsetLeft + iSpeedX;
+				var newTop = obj.offsetTop +　iSpeedY;
+				if(newTop >= document.documentElement.clientHeight - obj.offsetHeight){
+					iSpeedY *= -1;
+					iSpeedY *= 0.8;
+					iSpeedX *= 0.8;
+					newTop = document.documentElement.clientHeight - obj.offsetHeight;
+				}
+				if(newTop <= 0){
+					iSpeedY *= -1;
+					iSpeedY *= 0.8;
+					iSpeedX *= 0.8;
+					newTop = 0;
+				}
+				if(newLeft >= document.documentElement.clientWidth - obj.offsetWidth){
+					iSpeedX *= -1;
+					iSpeedX *= 0.8;
+					iSpeedY *= 0.8;
+					newLeft = document.documentElement.clientWidth - obj.offsetWidth;
+				}
+				if(newLeft <= 0){
+					iSpeedX *= -1;
+					iSpeedX *= 0.8;
+					iSpeedY *= 0.8;
+					newLeft = 0;
+				}
+				if(Math.abs(iSpeedX)<=0.1 && Math.abs(iSpeedY)<=3){
+					clearInterval(obj.timer);
+					console.log('over');
+				}
+				obj.style.left = newLeft + 'px';
+				obj.style.top = newTop + 'px';
+			},30)
+		}
+	</script>
+</body>
+</html>
