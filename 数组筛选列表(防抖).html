@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.wrapper{
+			width: 500px;
+			border:1px solid #ccc;
+			margin: 100px auto;
+			border-radius: 15px;
+		}
+		.wrapper .search{
+			width: 100%;
+			height: 60px;
+			margin-top: 10px;
+			position: relative;
+		}
+		.wrapper .search input{
+			width: 50%;
+			height: 30px;
+			outline: none;
+			padding: 5px;
+			border-radius: 5px;
+			border:1px solid #ccc;
+			margin:15px 0 0 15px;
+		}
+		.wrapper .search ul{
+			position: absolute;
+			right: 0px;
+			top: 15px;
+		}
+		.wrapper .search ul li{
+			float: left;
+			height: 30px;
+			padding: 5px 10px;
+			border:2px solid orange;
+			text-align: center;
+			color: orange;
+			line-height: 30px;
+			border-radius: 10px;
+			font-weight: bold;
+			margin-right: 10px;
+			cursor: pointer;
+		}
+		.wrapper .search ul li:hover{
+			border:2px solid #ccc;
+			color: #ccc;
+		}
+		.wrapper .userList{
+			width: 100%;
+			margin: 25px 0 25px 0;
+		}
+		.wrapper .userList li{
+			width: 90%;
+			margin: 10px auto;
+			height: 60px;
+			border:1px solid #bbb;
+			background-color: #ccc;
+		}
+		.wrapper .userList li .img{
+			display: inline-block;
+			width: 60px;
+			height: 60px;
+			background-color: #eee;
+		} 
+		.wrapper .userList li span{
+			display: inline-block;
+			width: 150px;
+			height: 60px;
+			line-height: 60px;
+			text-align: center;
+			vertical-align: top;
+			font-size: 18px;
+			font-weight: bold;
+		}
+		.wrapper .search .active{
+			background-color: orange;
+			color:#fff;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="search">
+			<input type="text" placeholder="请输入同学名" id="inp">
+			<ul id="sex">
+				<li sex="all" class="active">All</li>
+				<li sex="male">Male</li>
+				<li sex="female">Female</li>
+			</ul>
+		</div>
+		<div class="userList">
+			<ul id="list">
+				<li>
+					<div class="img"></div>
+					<span class="name">name1</span>
+					<span class="des">aaaaaaaa</span>
+				</li>
+				<li>
+					<div class="img"></div>
+					<span class="name">name2</span>
+					<span class="des">bbbbb</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script>
+		// var state = {
+		// 	value:'',
+		// 	sex:'all'
+		// };
+		function createStore(initState){
+			var list = [];
+			var state = initState;
+			//返回状态
+			function getState(){
+				return state;
+			}
+			//修改状态
+			function dispatch(action){
+				state[action.type] = action.value;
+				list.forEach(function(ele,index){
+					ele();
+				})
+			}
+			//订阅
+			function subscribe(handle){
+				list.push(handle);
+			}
+			return{
+				getState:getState,
+				dispatch:dispatch,
+				subscribe:subscribe
+			}
+		}
+		// var store = createStore({value:'',sex:'all'});
+	</script>
+	<script>
+		var store = createStore({value:'',sex:'all'});
+		var person = [
+			{name:'erya',sex:'female',des:'漂亮的女孩子'},
+			{name:'leon',sex:'male',des:'漂亮的程序员'},
+			{name:'马冬梅',sex:'female',des:'爱哭鬼'},
+			{name:'王美丽',sex:'female',des:'喜欢画画'},
+			{name:'杨晨',sex:'male',des:'喜欢编程'},
+			{name:'王华',sex:'female',des:'不喜欢学习'},
+			{name:'杨悦莹',sex:'female',des:'喜欢学习'},
+		];
+		var oUl = document.getElementById("list");
+		var oInp = document.getElementById("inp");
+		var sexUl = document.getElementById("sex");
+		//选择条件
+		// var state = {
+		// 	value:'',
+		// 	sex:'all'
+		// };
+		//把选择条件封装起来，不要放在全局里
+		//实现条件的函数
+		var filter = {
+			value:filterText,
+			sex:filterSex,
+		}
+		var timer;
+		//渲染函数
+		function render(list){
+			var str = "";
+			list.forEach(function(ele,index){
+				str += '<li>\
+						<div class="img"></div>\
+						<span class="name">'+ele.name+'</span>\
+						<span class="des">'+ele.des+'</span>\
+					</li>'
+			})
+			oUl.innerHTML = str;
+		}
+		render(person);
+		//根据输入内容筛选
+		// oInp.oninput = function(){
+		// 	//防抖（防止频繁调用函数）先清理定时器
+		// 	var self = this;
+		// 	clearTimeout(timer);
+		// 	timer = setTimeout(function(){
+		// 		console.log(self.value);
+		// 		state.value = self.value;
+		// 		render(addFn(filter,person));
+		// 	},1000)
+		// }
+
+		//封装防抖函数
+		function debounce(handle,delay){
+		var timer = null;
+			return function(){
+				var self = this;
+				var arg = arguments;
+				clearTimeout(timer);
+				timer = setTimeout(function(){
+					handle.apply(self,arg)
+				},delay)
+			}
+		};
+		oInp.oninput = debounce(event,1000);
+		function event(){
+			// state.value = this.value;
+			store.dispatch({type:'value',value:this.value});
+			console.log(this.value);
+			// render(addFn(filter,person));
+		}
+		
+		function filterText(text,arr){
+			return arr.filter(function(ele,index){
+				if(ele.name.indexOf(text) !== -1){
+					return true;
+				}
+			})
+		}
+		//筛选性别
+		sexUl.addEventListener('click' , function(e){
+			if(e.target.tagName == 'LI'){
+				// state.sex = e.target.getAttribute('sex');
+				store.dispatch({type:'sex',value:e.target.getAttribute('sex')});
+				document.getElementsByClassName('active')[0].className='';
+				e.target.className = 'active';
+				// render(filterSex(state.sex,person));
+			}
+		})
+		store.subscribe(function(){
+			render(addFn(filter,person));
+		})
+		function filterSex(sex,arr){
+			if(sex == 'all'){
+				return arr;
+			}else{
+				return arr.filter(function(ele,index){
+					if(sex == ele.sex){
+						return true;
+					}
+				})
+			}
+		}
+		//叠加选择
+		function addFn(obj,arr){
+			lastArr = arr;
+			for(var prop in obj){
+				lastArr = obj[prop](store.getState()[prop],lastArr);
+			}
+			return lastArr;
+		}
+	</script>
+</body>
+</html>
