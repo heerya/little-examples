@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin:0;
+			list-style: none;
+		}
+		.wrapper{
+			min-width: 930px;
+			margin:0 auto;
+			text-align: center;
+		}
+		.wrapper ul{
+			display: inline-block;
+		}
+		.wrapper li{
+			float: left;
+		}
+		.wrapper li .item{
+			width: 200px;
+			margin:0 5px 10px;
+			padding: 10px;
+			border:1px solid #ccc;
+		}
+		.wrapper li .item img{
+			width: 200px;
+		}
+		.wrapper li .item p{
+			color: #212121;
+			font-size: 15px;
+			font-weight: bold;
+		}
+		.wrapper .loading{
+			font-size: 30px;
+			font-weight: bold;
+			color: #ccc;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<ul>
+			<li>
+				<div class="item">
+					<img src="image/1.jpg" alt="图片">
+					<p>我是title</p>
+				</div>
+			</li>
+			<li>
+				<div class="item">
+					<img src="image/2.jpg" alt="图片">
+					<p>我是title</p>
+				</div>
+			</li>
+			<li>
+				<div class="item">
+					<img src="image/3.jpg" alt="图片">
+					<p>我是title</p>
+				</div>
+			</li>
+			<li>
+				<div class="item">
+					<img src="image/4.jpg" alt="图片">
+					<p>我是title</p>
+				</div>
+			</li>
+		</ul>
+		<div class="loading">loading...</div>
+	</div>
+	<script src="./js/jquery-3.3.1.min.js"></script>
+	<script>
+		(function(){
+			var num = 1;
+			var oLi = $('li');
+			var flag = false;
+			getData();
+			function getData(){
+				if(!flag){
+					flag = true;
+					$.ajax({
+						type:'GET',
+						url:'http://localhost/ajax/js/getPics.php?cpage='+num,
+						beforeSend:function(){
+							$('.loading').show();
+						},
+						success:callBack,
+						//success:function(data){
+						// 	console.log(data);
+						// }
+						error:error,
+					});
+					num++;
+				}
+				
+				function callBack(data){
+					console.log(JSON.parse(data));
+					$('.loading').hide();
+					var dataList = JSON.parse(data);
+					if(dataList.length>0){
+						dataList.forEach(function(ele,index){
+							var iDiv = $('<div class="item"></div>');
+							var oImg = new Image();
+							var oP = $('<p></p>');
+							oP.text(ele.title);
+							oImg.src = ele.preview;
+							oImg.onload = function(){
+								iDiv.append(oImg);
+								iDiv.append(oP);
+								var index = getMinList(oLi);
+								$(oLi[index]).append(iDiv);
+							}
+						})
+					}
+					flag = false;
+				}
+				
+				function error(){
+					console.log('error');
+				}
+
+			}
+			function getMinList(dom){
+					var minHeight = parseInt($(dom[0]).css('height'));
+					var index = 0;
+					for( var i = 0; i<dom.length;i++){
+						var height = parseInt($(dom[i]).css('height'));
+						if(height < minHeight){
+							minHeight = height;
+							index = i;
+						}
+					}
+					console.log(index);
+					return index
+				}
+			$(window).scroll(function(){
+				var scrollHeight = $(window).scrollTop();
+				var clientHeight = $(window).height();
+				var minLiH = parseInt($(oLi[getMinList(oLi)]).css('height'));
+				if(scrollHeight + clientHeight >minLiH){
+					getData();
+				}
+			})
+		})()
+		
+	</script>
+</body>
+</html>
