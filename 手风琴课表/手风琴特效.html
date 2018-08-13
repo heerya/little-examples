@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>折叠菜单</title>
+<style>
+	*{
+		padding:0;
+		margin:0;
+		list-style: none;
+	}
+	body{
+		background: #515151;
+	}
+	/*.btn{ 
+		width:100lix;
+		height:30lix; 
+		background:#036; 
+		margin:10lix; 
+		color:#fff;
+	}
+	.box{ 
+		border:#FF0004 2lix solid; 
+		width:200lix; 
+		height:100lix;
+	}*/
+	.out{ 
+		width:400px; 
+		border:3px solid #6A6A6A; 
+		margin:50px auto;
+	}
+	.out .date{ 
+		height: 45px;
+		background:#fff; 
+		border-bottom:1px solid #515151;
+	}
+	.out .date .left{
+		height: 20px;
+		margin:12px 10px;
+		float: left;
+	}
+	.out .date .right{
+		height: 15px;
+		margin:15px 10px;
+		float: right;
+	}
+	.out .date span{
+		font-size: 14px;
+		color: #515151;
+		line-height: 45px;
+		font-weight: bold;
+	}
+	.out .date:hover span{
+		color: #d81e06;
+	}
+	.out ul{
+		display:none;
+	}
+	.out ul li{ 
+		background:#8a8a8a; 
+		border-top: 1px solid #ccc;
+		font-size: 14px;
+		font-weight: bold;
+		color: #fff;
+		padding: 8px 30px;
+	}
+	.out ul li:hover{
+		background-color: #d81e06;
+	}
+</style>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+
+<script>
+// $(function(){
+//     $(".btn1").click(function(){
+// 	  //$(".box").show();
+// 	  //$(".box").fadeIn(2000);
+// 	  $(".box").slideDown();
+// 	})	
+// 	$(".btn2").click(function(){
+// 	  //$(".box").hide();
+// 	  //$(".box").fadeOut(1000);
+// 	  $(".box").slideUp();
+// 	})
+// 	$(".btn3").click(function(){
+// 	  //$(".box").toggle();
+// 	  //$(".box").fadeToggle();
+// 	  $(".box").slideToggle();
+// 	})
+// })
+$(function(){
+	$(".out ul").first().show();
+	$(".out .date").click(function(){
+		$(this).next("ul").slideToggle().siblings("ul").slideUp();	
+		$(this).children('.right').attr({ src: "images/up.png"});
+	})
+	$('.out .date').hover(function(){
+    	var index = $(this).attr('index');
+    	$(this).children('.left').attr({ src: 'images/'+index+'a.png'});
+    	$(this).children('.right').attr({ src: "images/down1.png"});
+	},function(){
+	    var index = $(this).attr('index');
+    	$(this).children('.left').attr({ src: 'images/'+index+'b.png'});
+    	$(this).children('.right').attr({ src: "images/down.png"});
+	})
+})
+</script>
+</head>
+
+<body>
+<!-- <div class="btn btn1">显示</div>
+<div class="btn btn2">隐藏</div>
+<div class="btn btn3">切换</div>
+<div class="box">我是内容我是内容我是内容我是内容我是内容我是内容我是内容我是内容</div> -->
+<div class="out">
+	<div class="date" index='7'>
+		<img class="left" src="images/7b.png">
+		<span>今天一定是美好的一天</span>
+		<img class="right" src="images/down.png">
+	</div>
+		<ul>
+			<li>今天没有课程</li>
+		</ul>
+    <div class="date" index='1'>
+		<img class="left" src="images/1b.png">
+		<span>这是一个星期的第一天</span>
+		<img class="right" src="images/down.png">
+	</div>
+    	<ul>
+    		<li>嵌入式计算机系统A</li>
+    		<li>第9-12节 主楼616（DSP实验室)</li>
+    		<li>智能终端开发技术</li>
+    		<li>第5-8节 主楼614 集成电路与集成系统实验室</li>
+    	</ul>
+    <div class="date" index='2'>
+		<img class="left" src="images/2b.png">
+		<span>继续工作学习</span>
+		<img class="right" src="images/down.png">
+	</div>
+    	<ul>
+    		<li>嵌入式计算机系统A</li>
+    		<li>第9-12节	主楼616（DSP实验室)</li>
+    	</ul>
+	<div class="date" index='3'>
+		<img class="left" src="images/3b.png">
+		<span>一周的一半都过去了</span>
+		<img class="right" src="images/down.png">
+	</div>
+    	<ul>
+    		<li>嵌入式计算机系统A</li>
+    		<li>第9-12节	主楼616（DSP实验室)</li>
+    	</ul>
+	<div class="date" index='4'>
+		<img class="left" src="images/4b.png">
+		<span>加油啊快到周末了</span>
+		<img class="right" src="images/down.png">
+	</div>
+    	<ul>
+    		<li>嵌入式计算机系统A</li>
+    		<li>第3-4节	四十八教A403</li>
+    	</ul>
+	<div class="date" index='5'>
+		<img class="left" src="images/5b.png">
+		<span>干巴爹，约起来！</span>
+		<img class="right" src="images/down.png">
+	</div>
+    	<ul>
+    		<li>哇，今天也没有课</li>
+    	</ul>
+	<div class="date" index='6'>
+		<img class="left" src="images/6b.png">
+		<span>玩玩玩！</span>
+		<img class="right" src="images/down.png">
+	</div>
+    	<ul>
+    		<li>今天没有课程</li>
+    	</ul>
+</div>
+</body>
+</html>
