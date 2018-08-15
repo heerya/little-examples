@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		ul{
+			display: inline-block;
+			background: rgba(255,165,0,1);
+			border-radius: 10px;
+			box-shadow: 0 5px 10px #ccc;
+			margin-bottom: 100px;
+		}
+		li{
+			display: inline-block;
+			border-right: 1px dashed #fff;
+			padding:0 40px;
+			margin: 10px 0;
+			color: #fff;
+			font-size: 20px;
+			font-weight: bold;
+			text-shadow: 3px 2px 1px #888;
+		}
+		.last{
+			border: 0;
+		}
+		p{
+			display: inline-block;
+			width: 360px;
+			height: 467px;
+			font-size: 10px;
+			word-wrap: break-word;
+			background: url('image/bg.jpg');
+			background-size: 100% 100%;
+			-webkit-background-clip:text;
+			-webkit-text-fill-color:transparent;
+		}
+		img{
+			width: 360px;
+			height: 467px;
+		}
+		.wrapper{
+			width: 400px;
+			height: 400px;
+			border:solid 1px #000;
+			text-align: center;
+			margin:0 auto;
+		}
+		.wrapper input{
+			position: relative;
+			width: 30px;
+			height: 30px;
+		}
+		.wrapper div{
+			display: none;
+			position: absolute;
+			width: 400px;
+			height: 370px;
+			text-align: center;
+			line-height: 370px;
+			font-size: 30px;
+			color: #fff;
+		}
+		.wrapper div:nth-of-type(1){
+			background-color: red;
+		}
+		.wrapper div:nth-of-type(2){
+			background-color: green;
+		}
+		.wrapper div:nth-of-type(3){
+			background-color: yellow;
+		}
+		.wrapper input:checked + div{
+			display: block;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>css3选项卡</h1>
+	<div class="wrapper">
+		<input type="radio" name="a" checked>
+		<div>a</div>
+		<input type="radio" name="a">
+		<div>b</div>
+		<input type="radio" name="a">
+		<div>c</div>
+	</div>
+	<h1>css3样式</h1>
+	<ul>
+		<li>a</li>
+		<li>b</li>
+		<li>c</li>
+		<li>d</li>
+		<li>e</li>
+		<li class="last">f</li>
+	</ul>
+	<h1>背景图片填充文字</h1>
+	<img src="image/bg.jpg">
+	<p>二附中的孙璟发现常会在公交车站遇到南高的秋瞳，终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…二附中的孙璟发现常会在公交车站遇到南高的秋瞳，终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…二附中的孙璟发现常会在公交车站遇到南高的秋瞳，终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…二附中的孙璟发现常会在公交车站遇到南高的秋瞳，终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…二附中的孙璟发现常会在公交车站遇到南高的秋瞳，终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…二附中的孙璟发现常会在公交车站遇到南高的秋瞳，终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…二附中的孙璟发现常会在公交车站遇到南高的秋瞳，终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…二附中的孙璟发现常会在公交车站遇到南高的秋瞳，终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…二附中的孙璟发现常会在公交车站遇到南高的秋瞳，终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…二附中的孙璟发现常会在公交车站遇到南高的秋瞳，终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…二附中的孙璟发现常会在公交车站遇到南高的秋瞳，终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…二附中的孙璟发现常会在公交车站遇到南高的秋瞳，终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…</p>
+
+	
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BAIDU</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		.wrapper{
+			position: relative;
+		}
+		.nav::after{
+			content: '';
+			clear: both;
+			display: block;
+		}
+		.nav ul{
+			float: right;
+		}
+		.nav ul li{
+			float: left;
+		}
+		.nav ul li a{
+			line-height: 30px;
+			font-size: 12px;
+			margin-left: 20px;
+			color: #212121;
+		}
+		.nav ul .item{
+			font-weight: bold;
+		}
+		.nav .btn{
+			float: right;
+			height: 20px;
+			width: 60px;
+			line-height: 20px;
+			text-align: center;
+			font-size: 12px;
+			color: #fff;
+			background-color: #38f;
+			margin:5px 5px 5px 20px;
+		}
+		.search-wrap{
+			width: 900px;
+			height: 200px;
+			text-align: center;
+			margin:100px auto;
+		}
+		.search{
+			position: relative;
+		}
+		.search input{
+			width: 521px;
+			height: 20px;
+		    padding: 9px 7px;
+		    font: 16px arial;
+		    border: 1px solid #b8b8b8;
+		    border-bottom: 1px solid #ccc;
+		    border-right: 0;
+		    vertical-align: top;
+		    outline: none;
+		    box-shadow: none;
+		    margin-top: 10px;
+		}
+		.search .btn{
+			cursor: pointer;
+			display: inline-block;
+		    width: 102px;
+		    height: 38px;
+		    line-height: 38px;
+		    padding: 0;
+		    border-bottom: 1px solid #ccc;
+		    border-top: 1px solid #ccc;
+		    background: none;
+		    background-color: #38f;
+		    font-size: 16px;
+		    color: white;
+		    box-shadow: none;
+		    font-weight: normal;
+		    margin-top: 10px;
+		}
+		.search .camera{
+			background-image: url('https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/soutu/img/camera_new_5606e8f.png');
+			height: 16px;
+    		width: 18px;
+			position: absolute;
+			right: 250px;
+			top: 22px;
+		}
+		.search .camera:hover{
+			background-position: 0 -20px;
+		}
+		.footer{
+			width: 500px;
+			height: 60px;
+			margin: 20px auto;
+			text-align: center;
+		}
+		.footer span{
+			color: #999;
+			font-size: 12px;
+			line-height: 16px;
+		}
+		.footer span a{
+			color: #999;
+		}
+		.footer .img{
+			width: 60px;
+			height: 60px;
+			margin:10px auto;
+			background:url(https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/home/img/qrcode/zbios_efde696.png) 0 0 no-repeat;
+		}
+		.footer strong{
+			display: block;
+			color: #666;
+			font-size: 12px;
+			line-height: 16px;
+			margin-bottom: 20px;
+		}
+		.wrapper .login{
+			z-index: 99;
+			position: absolute;
+			top: 0;
+			left:0;
+			height: 100%;
+			width: 100%;
+			background-color: rgba(0,0,0,0.5);
+			display: none;
+		}
+		.wrapper .login .box{
+			z-index: 999;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -180px;
+			margin-top:-215px;
+			width: 360px;
+			height: 430px;
+			background-color: #fff;
+		}
+		.wrapper .login .box .btn{
+			width: 30px;
+		    height: 30px;
+		    position: absolute;
+		    top: 10px;
+		    right: 10px;
+		    background-repeat: no-repeat;
+		    background-image: url('img/close1.png');
+			background-size: 100% 100%;
+			cursor: pointer;
+		}
+		.wrapper .login .box .btn:hover{
+			background-image: url('img/close.png');
+		}
+		.wrapper .set{
+			position: absolute;
+			right: 60px;
+			top: 35px;
+			display: none;
+		}
+		.wrapper .set ul{
+			box-shadow:  0 0 10px rgba(0,0,0,0.5);
+		}
+		.wrapper .set ul li{
+			line-height: 28px;
+			font-size: 12px;
+			color: #999;
+			padding: 3px 10px;
+		}
+		.wrapper .set ul li:hover{
+			background-color: #38f;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="login">
+			<div class="box">
+				<div class="btn"></div>
+			</div>
+		</div>
+		<div class="set">
+			<ul>
+				<li>搜索设置</li>
+				<li>高级搜索</li>
+				<li>关闭预测</li>
+				<li>隐私设置</li>
+			</ul>
+		</div>
+		<div class="nav">
+			<div class="btn">
+				更多产品
+			</div>
+			<ul>
+				<li class="item"><a href="">新闻</a></li>
+				<li class="item"><a href="">好123</a></li>
+				<li class="item"><a href="">地图</a></li>
+				<li class="item"><a href="">视频</a></li>
+				<li class="item"><a href="">贴吧</a></li>
+				<li class="item"><a href="">学术</a></li>
+				<li class="item1" id="login"><a href="">登录</a></li>
+				<li class="item1" id="set"><a href="">设置</a></li>
+			</ul>
+		</div>
+		<div class="search-wrap">
+			<img src="img/logo.png" alt="baidu">
+			<div class="search">
+				<input type="text"><div class="btn">百度一下</div>
+				<div class="camera"></div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="img"></div>
+			<strong>百度</strong>
+			<span><a href="">设为首页</a></span>
+			<span>&copy;2018 Baidu</span>
+			<span><a href="">使用百度前必读</a></span>
+			<span><a href="">意见反馈</a></span>
+			<span>京ICP证030173号</span>
+			<span>京公网安备11000002000001号</span>
+		</div>
+	</div>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script>
+		$('.wrapper .nav ul .login').click(function(){
+			$('#login').css('display','block');
+		})
+		$('.wrapper .login .btn').click(function(){
+			$('#login').css('display','none');
+		})
+		$('.wrapper .nav ul .set').hover(function(){
+			$('#set').css('display','block');
+		},function(){
+			$('#set').css('display','none');
+		})
+	</script>
+</body>
+</html>
