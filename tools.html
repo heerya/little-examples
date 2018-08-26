@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+	<style>
+
+	</style>
+</head>
+<body>
+	<script src="jquery-3.3.1.min.js"></script>
+<script>
+	
+//比较两个浮点数是否相等
+// function areTheNumbersAlmostEqual(num1, num2){
+// 	return Math.abs(num1 - num2) < Number.EPSILON;
+// }
+
+//产生0~99的随机数
+// for(var i = 0; i <10; i++){
+// 	var num = Math.floor(Math.random() * 100);
+// 	console.log(num);
+// }
+
+
+//判断类型
+//区分原始值和引用值
+// function type(target){
+// 	var template = {
+// 		"[object Array]" : "array",
+// 		"[object Object]" : "object",
+// 		"[object Number]" : "number - object",
+// 		"[object Boolean]" : 'boolean - object',
+// 		"[object String]" : 'string - object',
+// 	}
+// 	if (target === null){
+// 		return "null";
+// 	}
+// 	if (typeof(target)=='function'){
+// 		return 'function';
+// 	}else if(typeof(target) == 'object'){
+// 		var str = Object.prototype.toString.call(target);
+// 		return template[str];
+// 	}else{
+// 		return typeof(target);
+// 	}
+// }
+
+//数组去重
+// Array.prototype.unique = function(){
+// 	var temp = {};
+// 	var arr = [];
+// 	var len = this.length;
+// 	for ( var i = 0; i < len; i++){
+// 		if(!temp[this[i]]){		//对象的属性不为undefined时，放入值"abc"，把属性放入arr中实现新的数组没有重复的名字。
+// 			temp[this[i]] = "abc";
+// 			arr.push(this[i]);
+// 		}
+// 	}
+// 	return arr;
+// }
+
+// alibaba网上测验
+
+// const timeout = ms => new Promise((resolve, reject) => {
+// 	setTimeout(() => {
+// 		resolve();
+// 	}, ms);
+// });
+
+// const ajax1 = () => timeout(2000).then(() => {
+// 	console.log('1');
+// 	return 1;
+// });
+
+// const ajax2 = () => timeout(1000).then(() => {
+// 	console.log('2');
+// 	return 2;
+// });
+
+// const ajax3 = () => timeout(2000).then(() => {
+// 	console.log('3');
+// 	return 3;
+// });
+
+// const mergePromise = ajaxArray => {
+// 	在这里写什么才能让最后输出的结果为1，2，3。。。
+// 	// data = [ajax1(),ajax2() ,ajax3()];//2 1 3
+// };
+
+// mergePromise([ajax1, ajax2, ajax3]).then(data => {
+// 	console.log('done');
+// 	console.log(data); // data 为 [1, 2, 3]
+// });
+
+//找到#开头的，空格或者空结尾的字符
+// var reg = /#\S+( |$)/g;
+// var str = "这是#我的话题 好难啊,this is #mytopic find me.";
+// console.log(str.match(reg));
+
+//ajax GET/POST 'xxx.php' 'username=erya&age=21' 处理数据的函数名 true/false(同步/异步)
+// function ajaxFunc(method, url, data, callback ,flag){
+// 	//创建ajax对象
+// 	var xhr = null;
+// 	//兼容ie
+// 	if (window.XMLHttpRequest){
+// 		xhr = new XMLHttpRequest();
+// 	}else{
+// 		xhr = new ActiveXObject('Microsoft.XMLHttp');//ie
+// 	}
+// 	if(method == 'GET'){
+// 		//初始化
+// 		xhr.open(method,url +'?'+ data ,flag);
+// 		//发送
+// 		xhr.send();
+		
+// 	}else if(method == 'POST'){
+// 		//初始化
+// 		xhr.open(method,url,flag);
+// 		xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded')
+// 		//发送
+// 		xhr.send(data);
+// 	}
+// 	//每一次变化都会触发这个函数
+// 	xhr.onreadystatechange = function(){
+// 		if(xhr.readyState == 4){
+// 			//判断状态码
+// 			if(xhr.status == 200){
+// 				console.log(xhr.responseText);//数据是字符串类型!!
+// 				callback(xhr.responseText);
+// 			}
+// 		}
+// 	}
+// }
+
+//cookie增删改查
+// var manageCookie = {
+// 	//设置cookie
+// 	setCookie: function(name,value,time){
+// 		document.cookie = name + '=' + value + ';max-age='+ time;
+// 		return this;
+// 	},
+// 	//删除cookie
+// 	removeCookie: function(name){
+// 		return this.setCookie(name,'',-1);
+// 	},
+// 	//查找cookie
+// 	getCookie : function(name, callback){
+// 		var allCookieArr = document.cookie.split('; ');
+// 		for(var i = 0; i<allCookieArr.length; i++){
+// 			var itemCookieArr = allCookieArr[i].split('=');
+// 			if(itemCookieArr[0] == name){
+// 				callback(itemCookieArr[1]);
+// 				return this;
+// 			}
+// 		}
+// 		callback('undefind');
+// 	}
+// }
+
+//解决getElementsByClassName的兼容
+// Document.prototype.getByClassName = function(){
+// 	var allDomArr = Array.prototype.slice.call(document.getElementsByTagName('*'));//类数组变成数组
+// 	var filterArr = [];
+// 	function dealClass(dom){
+// 		//规范class名
+// 		var reg = /\s+/g;
+// 		var arrClassName = dom.className.replace(reg,' ').trim();
+// 		return arrClassName;
+// 	}
+// 	allDomArr.forEach(function(ele,index){
+// 		var itemClassArr = dealClass(ele).split(' ');
+// 		for( i= 0; i<itemClassArr.length; i++){
+// 			if(itemClassArr[i] == className){
+// 				filterArr.push(ele);
+// 				break;
+// 			}
+// 		}
+// 	})
+// 	return filterArr;
+// }
+
+//防抖 功能函数 延迟时间
+// function debounce(handle,delay){
+// 	var timer = null;
+// 	return function(){
+// 		var self = this;
+// 		var arg = arguments;
+// 		clearTimeout(timer);
+// 		timer = setTimeout(function(){
+// 			handle.apply(self,arg)
+// 		},delay)
+// 	}
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
