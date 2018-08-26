@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>高级表单校验插件开发【动脑学院】</title>
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="assets/plug/bootstrap-3.3.0/css/bootstrap.min.css">
+	<style type="text/css">
+		html,body{
+			background-color: #eee;
+		}
+		.form-regist{
+			background-color: #fff;
+			border: 1px solid #bbb;
+			border-radius: 5px;
+			padding:20px;
+			width: 600px;
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			margin-left: -300px;
+			margin-top: -250px;
+
+		}
+	</style>
+</head>
+<body>
+	<!--
+	1.一套代码标准（css\js）
+	2.标准的样式以及层级（帮助文档）
+	3.基于jquery一套组件库
+	4.图标字体
+	5.栅格系统
+	-->
+	<!--
+		==RULES==
+		require:必须填写
+		email:必须为邮箱地址
+		mobile：手机号码
+		phone:电话号码  010-22222222
+		regex:正则匹配
+		equal:必须一致
+		integer:整数
+		length:位数
+		rate:利率
+		amount:金额（允许小数，小数点保留两位）
+		...
+		用户扩展规则
+	-->
+	<div class="container form-regist">
+		<form id="regist-form" action="https://ke.qq.com/" autocomplete="off" method="get">
+			<!--
+				不能为空
+				符合邮箱规则
+			-->
+			<div class="form-group">
+			  <label class="control-label" for="inputEmail">邮箱：</label>
+			  <input type="text" class="form-control" id="inputEmail"
+			  	data-bv-require="true"
+			  	data-bv-email="true"
+			  	data-bv-email-message="* 邮箱地址不合法">
+			  <!-- <span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span> -->
+			</div>
+			<!--
+				不能为空
+				由字母数字下划线所组成，同时必须包含大小写字母和数字
+				必须和确认密码一致
+			-->
+			<div class="form-group">
+			  <label class="control-label" for="inputPassword">密码：</label>
+			  <input type="text" class="form-control" id="inputPassword"
+			  	data-bv-require="true"
+			  	data-bv-require-message="* 密码为必填项"
+				data-bv-regex="^(?![a-zA-Z_]+$)(?![\da-z_]+$)(?![\dA-Z_]+$)\w+"
+		    	data-bv-regex-message="* 密码必须由字母数字下划线所组成，同时必须包含大小写字母和数字"
+		    	data-bv-equal="#inputPassword2"
+		    	data-bv-equal-message="* 密码和确认密码不一致">
+			</div>
+			<!--
+				不能为空
+				由字母数字下划线所组成，同时必须包含大小写字母和数字
+				必须和密码一致
+			-->
+			<div class="form-group">
+			  <label class="control-label" for="inputPassword2">确认密码：</label>
+			  <input type="text" class="form-control" id="inputPassword2"
+			  	data-bv-require="true"
+			  	data-bv-require-message="* 密码为必填项"
+				data-bv-regex="^(?![a-zA-Z_]+$)(?![\da-z_]+$)(?![\dA-Z_]+$)\w+"
+		    	data-bv-regex-message="* 密码必须由字母数字下划线所组成，同时必须包含大小写字母和数字"
+		    	data-bv-equal="#inputPassword"
+		    	data-bv-equal-message="* 密码和确认密码不一致">
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">
+					<i class="glyphicon glyphicon-ok"></i> 提交</button>
+				<button type="reset" class="btn btn-info">
+					<i class="glyphicon glyphicon-star-empty"></i> 重置</button>
+			</div>
+		</form>
+
+		<form id="test-form" action="http://www.baidu.com" autocomplete="off">
+			<div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+			    <ul id="myTabs" class="nav nav-tabs" role="tablist">
+			      <li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">手机号码：</a></li>
+			      <li role="presentation"><a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile">电话号码：</a></li>
+			    </ul>
+			    <div id="myTabContent" class="tab-content">
+			      <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+			        <div class="form-group">
+					  <label class="control-label" for="inputMoblie"></label>
+					  <input type="text" class="form-control" id="inputMoblie"
+					  	data-bv-require="true"
+					  	data-bv-mobile="true"
+					  	data-bv-mobile-message="* 手机号码不合法">
+					</div>
+			      </div>
+			      <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
+			        <div class="form-group">
+					  <label class="control-label" for="inputPhone"></label>
+					  <input type="text" class="form-control" id="inputPhone"
+					  	data-bv-require="true"
+					  	data-bv-require-message="* 电话号码必须填写"
+					  	data-bv-phone="true"
+					  	data-bv-phone-message="* 电话号码不合法">
+					</div>
+					<div class="form-group">
+					  <label class="control-label" for="inputCard"></label>
+					  <input type="text" class="form-control" id="inputCard"
+					  	data-bv-require="true"
+					  	data-bv-require-message="* 身份证号码必须填写"
+					  	data-bv-cardid="true"
+					  	data-bv-cardid-message="* 身份证号码不合法">
+					</div>
+			      </div>
+			    </div>
+			    <div class="form-group">
+					<button type="submit" class="btn btn-primary">
+						<i class="glyphicon glyphicon-ok"></i> 提交</button>
+					<button type="reset" class="btn btn-info">
+						<i class="glyphicon glyphicon-star-empty"></i> 重置</button>
+				</div>
+			  </div>
+
+		</form>
+	</div>
+	<script type="text/javascript" src="assets/plug/jquery/jquery-2.2.4.js"></script>
+	<script type="text/javascript" src="assets/plug/bootstrap-3.3.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/plug/bootstrap-validator-1.0.0/bootstrap-validator.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#regist-form").bootstrapValidator({
+				raise : "keyup"
+			});//开启校验
+			$("#test-form").bootstrapValidator({
+				raise : "change"
+			}).extendRules({
+				"cardid" : function(){
+					return /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(this.val());
+				}
+			});//开启校验
+		});
+	</script>
+</body>
+</html>

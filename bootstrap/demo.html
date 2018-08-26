@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Launch demo modal
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close cancelClose" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">注册</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default cancelClose" data-dismiss="modal">Close</button>
+              <button type="button" id="yanzheng" class="btn btn-primary">
+                    登录
+                  </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" id="loading-example-btn" data-loading-text="Loading..." class="btn btn-primary" autocomplete="off">
+        Loading state
+      </button>
+
+
+          
+    <script src="./jquery.js"></script>
+    <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script>
+        var emailExp = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+        //密码强度正则，最少6位，包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符
+        var keyExp = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/;
+        var obj = {
+            email: false,
+            password: false
+        }
+        $('#inputEmail3').on('blur', function () {
+            obj.email = emailExp.test($(this).val());
+            if(obj.email) {
+                $(this).parents('.form-group').removeClass('has-error').addClass('has-success');
+            }else {
+                $(this).parents('.form-group').removeClass('has-success').addClass('has-error');
+            }
+        })
+        $('#inputPassword3').on('blur', function () {
+            obj.password = keyExp.test($(this).val());
+            if(obj.password) {
+                $(this).parents('.form-group').removeClass('has-error').addClass('has-success');
+            }else {
+                $(this).parents('.form-group').removeClass('has-success').addClass('has-error');
+            }
+        });
+        $('#yanzheng').on('click', function () {
+            if(obj.email && obj.password) {
+                var $btn = $(this).button('loading');
+                //此处可发送网络请求
+                setTimeout(function () {
+                    $btn.button('reset');
+                }, 2000)  
+            }
+        });
+        $('.cancelClose').on('click', function () {
+            $('.form-group').find($('input')).val('');
+            $('.has-success').removeClass('has-success');
+            $('.has-error').removeClass('has-error');
+        }) 
+         
+       
+        
+    </script>
+</body>
+</html>

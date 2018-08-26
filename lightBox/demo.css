@@ -1,0 +1,73 @@
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+.shadow{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.7);
+}
+.box{
+    width:90%;
+    margin:100px auto;
+}
+.box .pic{
+    display:inline-block;
+    width:300px;
+    border:3px solid #ccc; 
+    vertical-align: middle;
+    cursor: pointer;
+}
+.box .pic img{
+    width:100%;
+}
+
+.show{
+    display:none;
+    position: fixed;
+    z-index:1000;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+.show .picView{
+    position: absolute;
+    top:5%;
+    left:5%;
+    width:90%;
+    height:90%;
+    text-align: center;
+}
+.show .picView img{
+    max-width:100%;
+    height:100%;
+    border:5px solid #fff;
+    border-radius:3px;
+}
+.btnView .btn{
+    position:absolute;
+    top:5%;
+    width:40px;
+    height:40px;
+}
+.btnView .btn.btn-prev{
+    top:45%;
+    left:20px;
+    background:url('./icon/prev.png') 100% 100% no-repeat;
+}
+.btnView .btn.btn-next{
+    top:45%;
+    right:20px;
+    background:url('./icon/next.png') 100% 100% no-repeat;
+}
+.btnView .btn.btn-close{
+    top:0;
+    right:20px;
+    background:url('./icon/close.png') 100% 100% no-repeat;
+}
