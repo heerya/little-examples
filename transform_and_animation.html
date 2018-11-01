@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            transform-style: preserve-3d;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: move 4s linear infinite;
+        }
+        .demo{
+            width:100px;
+            height:100px;
+            position:absolute;
+        }
+        .demo:nth-child(1){
+            background: gold;
+            transform: rotateY(60deg) translateZ(100px);
+        }
+        .demo:nth-child(2){
+            background: wheat;
+            transform: rotateY(120deg) translateZ(100px);
+        }
+        .demo:nth-child(3){
+            background: brown;
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        .demo:nth-child(4){
+            background: hotpink;
+            transform: rotateY(240deg) translateZ(100px);
+        }
+        .demo:nth-child(5){
+            background: teal;
+            transform: rotateY(300deg) translateZ(100px);
+        }
+        .demo:nth-child(6){
+            background: rebeccapurple;
+            transform: rotateY(360deg) translateZ(100px);
+        }
+
+        .search{
+            width: 500px;
+            height: 50px;
+            margin: 100px auto;
+            border: 1px solid #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            padding: 10px;
+            background: linear-gradient(to top,#f6f6f6,#eae8e8);
+            box-shadow: 0 10px 5px 0 #ccc,0 5px 0 #bbb,0 10px 5px #444;
+
+        }
+        @keyframes move{
+            from{
+                transform:rotateX(-30deg) rotateY(0deg);
+            }
+            to{
+                transform:rotateX(-30deg) rotateY(360deg);
+            }
+        }
+        .search input:nth-child(1){
+            height: 30px;
+            width: 70%;
+            margin-right: 10px;
+            border-top-left-radius: 5px;
+        }
+        .search input:nth-child(2){
+            height: 30px;
+            width: 20%;
+            box-shadow: 3px 3px 3px #aaa,3px 3px 3px #bbb inset;
+        }
+        .wrapper input:nth-child(1):hover{
+            box-shadow: 5px 5px 5px #eee inset;
+            outline: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+        <div class="demo"></div>
+    </div>
+    <div class="search">
+        <input type="text" class="oninput">
+        <input type="submit" class="go" value="Go!">
+    </div>
+    <div class="test"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+
+    </script>
+</body>
+
+</html>
