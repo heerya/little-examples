@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>照片墙Demo</title>
+    <style>
+    *{
+        margin: 0;
+        padding:0;
+        list-style: none;
+    }
+    html,body, .wrapper{
+        width: 100%;
+        height: 100%;
+    }
+    .wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #000;
+    }
+    .wrapper .content{
+        width: 80%;
+        height: 80%;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .wrapper .item{
+        height: 100%;
+        width: 16%;
+        color: #fff;
+        font-weight: bold;
+        background-color: #333;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: height 0.5s linear 0.5s,width 0.5s linear;
+    }
+    .wrapper .item .inner{
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s linear;
+        position: relative;
+    }
+    .init .item .inner{
+        transform: translateY(100%);
+    }
+    .item:nth-of-type(1) .inner{
+        transition-delay: 0.1s;
+    }
+    .item:nth-of-type(2) .inner{
+        transition-delay: 0.2s;
+    }
+    .item:nth-of-type(3) .inner{
+        transition-delay: 0.3s;
+    }
+    .item:nth-of-type(4) .inner{
+        transition-delay: 0.4s;
+    }
+    .item:nth-of-type(5) .inner{
+        transition-delay: 0.5s;
+    }
+    .item:nth-of-type(6) .inner{
+        transition-delay: 0.6s;
+    }
+    .item:nth-child(1) .inner .bg{
+        background-image: url('./1.jpeg');
+    }
+    .item:nth-child(2) .inner .bg{
+        background-image: url('./2.jpeg');
+    }
+    .item:nth-child(3) .inner .bg{
+        background-image: url('./3.jpeg');
+    }
+    .item:nth-child(4) .inner .bg{
+        background-image: url('./4.jpeg');
+    }
+    .item:nth-child(5) .inner .bg{
+        background-image: url('./5.jpeg');
+    }
+    .item:nth-child(6) .inner .bg{
+        background-image: url('./6.jpeg');
+    }
+    .item .inner .bg{
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.5;
+    }
+    .item .inner .bg:hover{
+        opacity: 1;
+    }
+    .item .inner .title{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        font-size: 20px;
+        transition: font-size 0.5s;
+    }
+    .item .inner .title:hover{
+        font-size: 30px;
+    }
+    /* 点击展示 */
+    .item.active{
+        width: 100%;
+    }
+    .activeWrap .item:not(.active){
+        width: 0%;
+        height: 0%;
+    }
+    .activeWrap .item{
+        transition: height 0.5s linear,width 0.5s linear 0.5s;
+    }
+    .activeWrap .item .title{
+        opacity: 0;
+    }
+    /* 展开后 */
+    .item .inner .dir{
+        width: 100%;
+        height: 30px;
+        position: absolute;
+        top: 10%;
+        opacity: 0;
+    }
+    .item.active .inner .dir{
+        opacity: 1;
+        font-size: 25px;
+        transition: opacity 0.5 linear 1s;
+    }
+    .item.active .inner .dir .header{
+        position: absolute;
+        color: #fff;
+        left: 50px;
+    }
+    .item.active .inner .dir .close{
+        width: 35px;
+        height: 35px;
+        position: absolute;
+        right: 50px;
+        background-image: url('./close.png');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        transform: rotate(360deg);
+        transition: transform 0.5s linear 1s;
+    }
+    .item.active .inner .dir .close:hover{
+        transform: rotate(0deg);
+        transition: transform 0.5s linear;
+    }
+    .item.active .inner .bg{
+        opacity: 1;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper init">
+        <ul class="content">
+            <li class="item">
+                <div class="inner">
+                    <div class="bg"></div>
+                    <div class="title">廿一</div>
+                    <div class="dir">
+                        <div class="header">桃花流水</div>
+                        <div class="close"></div>
+                    </div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="inner">
+                    <div class="bg"></div>
+                    <div class="title">寒露</div>
+                    <div class="dir">
+                        <div class="header">霜草苍苍</div>
+                        <div class="close"></div>
+                    </div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="inner">
+                    <div class="bg"></div>
+                    <div class="title">霜降</div>
+                    <div class="dir">
+                        <div class="header">月明荞麦</div>
+                        <div class="close"></div>
+                    </div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="inner">
+                    <div class="bg"></div>
+                    <div class="title">重阳</div>
+                    <div class="dir">
+                        <div class="header">日星隐耀</div>
+                        <div class="close"></div>
+                    </div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="inner">
+                    <div class="bg"></div>
+                    <div class="title">立冬</div>
+                    <div class="dir">
+                        <div class="header">雨雪霏霏</div>
+                        <div class="close"></div>
+                    </div>
+                </div>
+            </li>
+            <li class="item">
+                <div class="inner">
+                    <div class="bg"></div>
+                    <div class="title">初七</div>
+                    <div class="dir">
+                        <div class="header">郁郁青青</div>
+                        <div class="close"></div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <script src="./jquery.js"></script>
+    <script>
+    var wrap = $('.wrapper');
+    setTimeout(function(){
+       wrap.removeClass('init');
+    },2000)
+    $('.item').on('click',function(){
+        $(this).addClass('active');
+        $('.wrapper').addClass('activeWrap');
+    })
+    $('.close').on('click',function(e){
+        e.stopPropagation();
+        $('.active').removeClass('active');
+        wrap.removeClass('activeWrap');
+    })
+    </script>
+</body>
+</html>
