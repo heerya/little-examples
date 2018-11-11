@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cube</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .wrapper{
+        margin: 100px auto;
+        width: 300px;
+        height: 300px;
+        perspective: 1000px;
+    }
+    .box{
+        transform-style: preserve-3d;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        left: 50px;
+        top: 50px;
+        transform-origin: center center;
+        animation: move 8s infinite;
+    }
+    .box .item{
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+        border-radius: 20px;
+        opacity: 0.5;
+        text-align: center;
+        line-height: 200px;
+    }
+    .item:nth-child(1){
+        background-color:antiquewhite;
+        transform: rotateY(0deg) translateZ(100px);
+    }
+    .item:nth-child(2){
+        background-color:aqua;
+        transform: rotateY(90deg) translateZ(100px);
+    }
+    .item:nth-child(3){
+        background-color:blueviolet;
+        transform: rotateY(180deg) translateZ(100px);
+    }
+    .item:nth-child(4){
+        background-color:brown;
+        transform: rotateY(-90deg) translateZ(100px);
+    }
+    .item:nth-child(5){
+        background-color:cadetblue;
+        transform: rotateX(90deg) translateZ(100px);
+    }
+    .item:nth-child(6){
+        background-color:chocolate;
+        transform: rotateX(-90deg) translateZ(100px);
+    }
+    @keyframes move{
+        0%{
+            transform: rotateY(0deg);
+        }
+        50%{
+            transform: rotateY(-720deg);
+        }
+        51%{
+            transform: rotateX(-720deg);
+        }
+        100%{
+            transform: rotateX(0deg);
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="box">
+            <div class="item">1</div>
+            <div class="item">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item">5</div>
+            <div class="item">6</div>
+        </div>
+    </div>
+</body>
+</html>

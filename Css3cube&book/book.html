@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Book</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: rosybrown;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        .card{
+            width: 360px;
+            height: 539px;
+            position: absolute;
+            top: 20%;
+            left: 45%;
+            perspective: 2000px;
+            transform-style: preserve-3d;
+            transition: all 1s;
+            box-shadow: inset 300px 0 50px rgba(0,0,0,0.5),20px 0 60px rgba(0,0,0,0.5);
+            background: #fff;
+        }
+        .card::before{
+            content: '';
+            display: block;
+            height: 5px;
+            width: 100%;
+            background: #666;
+            position: absolute;
+            top: -5px;
+            left: 0;            
+            transform-origin: bottom;
+            transform: skewX(-45deg);
+        }
+        .card::after{
+            content: '';
+            display: block;
+            height: 100%;
+            width: 5px;
+            background: #666;
+            position: absolute;
+            right: -5px;
+            top: 0;
+            transform-origin: left;
+            transform: skewY(-45deg);
+        }
+        .card:hover{
+            box-shadow: inset 20px 0 50px rgba(0,0,0,0.5),0px 10px 100px rgba(0,0,0,0.5);
+            transform: rotateZ(15deg) scale(1.1);
+        }
+        .card:hover .imgBox{
+            transform: rotateY(-135deg);
+        }
+        .card:hover .imgBox .bark{
+            opacity: 1;
+            transition: all 0.7s;
+            box-shadow: inset 300px 200px 100px rgba(0, 0, 0, 0.5);
+        }
+        .card .imgBox{
+            width: 100%;
+            height: 100%;
+            transform-origin: left;
+            transition: all 0.7s;
+        }
+        .card .imgBox .bark{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #888;
+            opacity: 0;
+            top: 0;
+            left: 0;
+        }
+        .card .details{
+            position: absolute;
+            top: 0;
+            z-index: -1;
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="imgBox">
+            <img src="./c.jpeg" alt="sq">
+            <div class="bark"></div>
+        </div>
+        <div class="details">
+            <h1>SQ</h1>
+            <h3>爱你爱你爱你！</h3>
+            <img src="./a.jpeg" alt="sq">
+        </div>
+    </div>
+</body>
+</html>
