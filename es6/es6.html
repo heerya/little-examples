@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .tpl {
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="wrapper">
+        <div class="tpl">
+            <p></p>
+            <span></span>
+            <button>add</button>
+        </div>
+
+        <p class="demo">
+            <span>sum:</span>
+            <span class="sum">0</span>
+        </p>
+    </div>
 </body>
+<script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
 <script src="./es6toes5.js"></script>
+<script>
+    $('.demo').queue('chain',function(){
+        console.log('over1');
+    }).queue('chain',function(){
+        console.log('over2');
+    })
+    console.log($('.demo').queue('chain'));//[ƒ, ƒ]
+    $('.demo').dequeue('chain');//over1 出列一个
+    console.log($('.demo').queue('chain'));//[ƒ] 少了一个
+    $('.demo').clearQueue('chain'); //清空
+    $('.demo').queue('chain',function(next){
+        console.log('over3');
+        next();
+    }).queue('chain',function(next){
+        console.log('over4');
+    })
+    $('.demo').dequeue('chain');//over3 over4 全部出列
+</script>
+
 </html>

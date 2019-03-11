@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搜索热点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tpl {
+            display: none;
+        }
+
+        .clearF::after {
+            content: '';
+            display: block;
+            clear: both;
+            overflow: hidden;
+        }
+
+        .wrapper {
+            border: 1px solid #ccc;
+            padding: 10px 5px;
+            width: 350px;
+            margin: 100px auto 0px;
+        }
+
+        .headSction {
+            margin-bottom: 10px;
+        }
+
+        .hot {
+            font-size: 18px;
+            font-weight: bold;
+            float: left;
+        }
+
+        .change {
+            float: right;
+            color: brown;
+            cursor: pointer;
+        }
+
+        .number {
+            color: #fff;
+            background: #0bf;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .mes {
+            float: right;
+        }
+
+        .mes.up::after {
+            content: '';
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-image: url('./img/up.png');
+            background-size: 100% 100%;
+            background-position-y: 2px;
+        }
+
+        .mes.down::after {
+            content: '';
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-image: url('./img/down.png');
+            background-size: 100% 100%;
+            background-position-y: 1px;
+        }
+
+        .showSction li {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="headSction clearF">
+            <span class="hot">搜索热点</span>
+            <span class="change">换一换</span>
+        </div>
+        <ul class="showSction">
+            <li class="tpl clearF">
+                <span class="number">1</span>
+                <span class="title">金星</span>
+                <span class="mes down">3433</span>
+            </li>
+        </ul>
+    </div>
+    <script src="./serverData.js"></script>
+    <script src="./jquery.min.js"></script>
+    <script>
+        (function () {
+            //初始化变量
+            var $wrapper = $('.wrapper')
+            var $showSction = $wrapper.find('.showSction');
+            var colorArray = ['#f54545', '#ff8547', '#ffac38'];
+            var curPage = 0;
+            var totalPage = Math.ceil(data.length / 10);
+            $showSction.hide();
+            function bindEvent(){
+                $('.change').click(function(){
+                    if(curPage+1 >= totalPage){
+                        curPage = 0;
+                    }else{
+                        curPage++;
+                    }
+                    renderPage(data);
+                })
+            }
+            function renderPage(data) {
+                $showSction.hide().find('.showItem').remove();
+                var len = (data.length - curPage * 10) >= 10 ? 10 : data.length - curPage * 10;
+                for (var i = 0; i < len; i++) {
+                    var $clone = $wrapper.find('.tpl').clone().removeClass('tpl');
+                    var ele = data[i + curPage * 10];
+                    $clone.children('span').eq(0)
+                        .text(i + curPage * 10 + 1).css('backgroundColor', curPage == 0 && colorArray[i + curPage])
+                        .next()
+                        .text(ele.title)
+                        .next()
+                        .addClass(ele.search > ele.hisSearch ? 'up' : 'down');
+                    $clone.addClass('showItem');
+                    $showSction.append($clone);
+                }
+                $showSction.fadeIn();
+            }
+            bindEvent();
+            renderPage(data);
+        })(data)
+    </script>
+</body>
+
+</html>
