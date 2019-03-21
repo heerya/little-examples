@@ -7,45 +7,42 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        .tpl {
-            display: none;
+        div{
+            width: 100px;
+            height: 100px;
+            background: orange;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
     </style>
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="tpl">
-            <p></p>
-            <span></span>
-            <button>add</button>
-        </div>
-
-        <p class="demo">
-            <span>sum:</span>
-            <span class="sum">0</span>
-        </p>
-    </div>
+    <div></div>
 </body>
 <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
 <script src="./es6toes5.js"></script>
 <script>
-    $('.demo').queue('chain',function(){
-        console.log('over1');
-    }).queue('chain',function(){
-        console.log('over2');
-    })
-    console.log($('.demo').queue('chain'));//[ƒ, ƒ]
-    $('.demo').dequeue('chain');//over1 出列一个
-    console.log($('.demo').queue('chain'));//[ƒ] 少了一个
-    $('.demo').clearQueue('chain'); //清空
-    $('.demo').queue('chain',function(next){
-        console.log('over3');
-        next();
-    }).queue('chain',function(next){
-        console.log('over4');
-    })
-    $('.demo').dequeue('chain');//over3 over4 全部出列
+    function drag(div){
+        var disx,disy;
+        div.on('mousedown',function(e){
+            console.log(e);
+            console.log(disx,disy);
+            disx = e.clientX- parseInt(div.css('left'));
+            disy = e.clientY - parseInt(div.css('top'));
+            document.onmousemove = function(e){
+                var e = e || window.event;
+                div.css('left',e.pageX - disx);
+                div.css('top',e.pageY - disy);
+            }
+            document.onmouseup = function(){
+                document.onmousemove = null;
+            }
+        }) 
+        
+    }
+    drag($('div'));
 </script>
 
 </html>
