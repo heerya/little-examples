@@ -24,25 +24,19 @@
 <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
 <script src="./es6toes5.js"></script>
 <script>
-    function drag(div){
-        var disx,disy;
-        div.on('mousedown',function(e){
-            console.log(e);
-            console.log(disx,disy);
-            disx = e.clientX- parseInt(div.css('left'));
-            disy = e.clientY - parseInt(div.css('top'));
-            document.onmousemove = function(e){
-                var e = e || window.event;
-                div.css('left',e.pageX - disx);
-                div.css('top',e.pageY - disy);
-            }
-            document.onmouseup = function(){
-                document.onmousemove = null;
-            }
-        }) 
-        
+    //once memory记忆参数 unique去重 stopOnFalse有函数return false就停止执行
+    var cb = $.Callbacks('unique');
+    function a (x,y){
+        console.log('a', x , y);
     }
-    drag($('div'));
+    function b (x,y){
+        console.log('b', x , y);
+    }
+    cb.add(a,b);
+    cb.fire('10','20')//a 10 20 b 10 20
+    function c(x,y){
+        console.log('c', x , y);
+    }
 </script>
 
 </html>
