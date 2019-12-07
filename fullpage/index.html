@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./fullpage.min.css"> -->
+    <script src="./jquery-2.2.4.js"></script>
+    <!-- <script src="./fullpage.min.js"></script> -->
+    <style>
+    html, body{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+    }
+    .wrapper{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: orange;
+    }
+    .wrapper .sction{
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+    .wrapper .sction .slide{
+        
+    }
+    </style>
+</head>
+<body>
+    <!-- <div id="fullpage">
+        <div class="section">第一屏</div>
+        <div class="section">第二屏</div>
+        <div class="section">
+            <div class="slide">第三屏的第一屏</div>
+            <div class="slide">第三屏的第二屏</div>
+            <div class="slide">第三屏的第三屏</div>
+            <div class="slide">第三屏的第四屏</div>
+        </div>
+        <div class="section">第四屏</div>
+    </div> -->
+    <div class="wrapper">
+        <div class="sction">1</div>
+        <div class="sction">2</div>
+        <div class="sction">
+            <div class="slide">第三屏的第一屏</div>
+            <div class="slide">第三屏的第二屏</div>
+        </div>
+    </div>
+    <script src="./myFullpage.js"></script>
+    <script>
+    // $(function(){
+    //     $('#fullpage').fullpage();
+    // });
+    </script>
+</body>
+</html>

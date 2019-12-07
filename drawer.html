@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+    .control-btn{
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+        text-align: center;
+        line-height: 50px;
+        background: #eee;
+        border-top-left-radius: 50%;
+        border-bottom-left-radius: 50%;
+        cursor: pointer;
+    }
+    .drawer{
+        width: 750px;
+        position: fixed;
+        top: 0;
+        right: -700px;
+        height: 800px;
+        display: flex;
+        flex-direction: row;
+        transition: 0.6s;
+    }
+    .drawer iframe{
+        border-left: 1px solid #eee;
+    }
+    .show{
+        right: 0;
+    }
+    </style>
+</head>
+<body>
+    
+    <div class="drawer">
+        <div class="control-btn"><</div>
+        <iframe src="https://www.baidu.com" frameborder="0" width="700"></iframe>
+    </div>
+    <script src="./js/jquery-1.11.3.min.js"></script>
+    <script>
+        $('.control-btn').click(function(){
+            if($(this).text() === '>') $(this).text('<');
+            else $(this).text('>')
+            $('.drawer').toggleClass('show');
+        })
+    </script>
+</body>
+</html>
